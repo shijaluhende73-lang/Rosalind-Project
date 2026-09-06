@@ -1,7 +1,8 @@
-def hamming_distance(s, t):
-    return sum(1 for a, b in zip(s, t) if a != b)
-with open('rosalind_hamm.txt') as f:
-    lines = [line.strip() for line in f if line.strip()]
-s = lines[0]
-t = lines[1]
-print(hamming_distance(s, t))
+def mendel_probability(k, m, n):
+    total = k + m + n
+    p_nn = (n / total) * ((n - 1) / (total - 1))
+    p_nm = 2 * (n / total) * (m / (total - 1)) * 0.5
+    p_mm = (m / total) * ((m - 1) / (total - 1)) * 0.25
+    total_recessive = p_nn + p_nm + p_mm
+    return 1 - total_recessive
+print(mendel_probability(25 , 22, 23))
